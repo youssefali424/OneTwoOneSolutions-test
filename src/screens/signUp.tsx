@@ -53,7 +53,7 @@ class SignUpScreen extends Component<any, State> {
   }
   chooseImage() {
     console.log('image');
-    ImagePicker.showImagePicker(
+    ImagePicker.launchImageLibrary(
       {mediaType: 'photo', quality: 0.3},
       (response) => {
         console.log('Response = ', response);
