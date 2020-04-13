@@ -57,7 +57,7 @@ const Intro = (props: Props) => {
 const passedIntro = async () => {
   await AsyncStorage.setItem('@passedIntro', '@passedIntro');
 };
-const isPassedIntro = async (): Promise<boolean> => {
+export const isPassedIntro = async (): Promise<boolean> => {
   const value = await AsyncStorage.getItem('@passedIntro');
   if (value !== null) {
     return true;

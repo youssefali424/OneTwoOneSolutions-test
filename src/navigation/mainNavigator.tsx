@@ -11,10 +11,12 @@ const Stack = createStackNavigator();
 
 //in bigger apps i would have made it more organised
 //but didnt cuz its a one day project no needed complexity
-
-export const MainNavigator = () => (
+interface Props {
+  initialRoot: string;
+}
+export const MainNavigator = (props: Props) => (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={props.initialRoot}>
       <Stack.Screen
         name="Intro"
         component={Intro}

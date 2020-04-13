@@ -8,17 +8,27 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StatusBar} from 'react-native';
 
 import {MainNavigator} from '_navigation/mainNavigator';
+import RNBootSplash from 'react-native-bootsplash';
+import {isPassedIntro} from '_screens/Intro';
 
 const App = () => {
+  let initialRoot = useRef('Intro');
+  useEffect(() => {
+    isPassedIntro().then((e) => {
+      initialRoot.current = e ? 'Intro' : 'LogInScreen';
+      RNBootSplash.hide({duration: 250});
+    });
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
       {/* <SafeAreaView> */}
-      <MainNavigator />
+      <MainNavigator initialRoot={initialRoot.current} />
       {/* </SafeAreaView> */}
     </>
   );
