@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "_navigation/*": ["./navigation/*"],
+      "_screens/*": ["./screens/*"],
+      "_molecules/*": ["./molecules/*"],
+      "_styles/*": ["./styles/*"],
+      "_components/*": ["./components/*"],
+      "_network/*": ["./network/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
