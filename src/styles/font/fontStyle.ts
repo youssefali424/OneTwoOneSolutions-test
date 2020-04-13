@@ -16,6 +16,11 @@ const fontStyles = StyleSheet.create({
     fontSize: fontSizes[7],
     fontWeight: 'bold',
   },
+  logInLogo: {
+    color: '#3B3C4E',
+    fontSize: fontSizes[7],
+    fontWeight: 'bold',
+  },
   mainButton: {
     color: '#FFFFFF',
     fontSize: fontSizes[3],
