@@ -43,11 +43,18 @@ class LogInScreen extends Component<Props, State> {
           routes: [{name: 'HomeScreen'}],
         });
       },
-      (e) => {
+      (error) => {
         this.setState({
           loading: false,
         });
-        Alert.alert('Error', `${e}`);
+
+        if (
+          error.code === 'auth/invalid-email' ||
+          error.code === 'auth/user-not-found' ||
+          error.code === 'auth/wrong-password'
+        ) {
+          Alert.alert('Error', 'wrong Email or password');
+        }
       },
     );
   }
@@ -63,11 +70,11 @@ class LogInScreen extends Component<Props, State> {
         <View style={(styles.container, {height})}>
           <Spinner visible={this.state.loading} />
           <View style={[styles.row, styles.logoContainer]}>
-            <Card style={[styles.logoCard]}>
-              <CardItem style={styles.logoItem}>
-                <Text style={fontStyles.logo}>Be</Text>
-              </CardItem>
-            </Card>
+            <View style={[styles.logoCard]}>
+              <View style={styles.logoItem}>
+                <Text style={fontStyles.logInLogo}>Be</Text>
+              </View>
+            </View>
           </View>
           <View style={styles.row}>
             <MyForm
@@ -106,8 +113,7 @@ const styles = StyleSheet.create({
   },
   row: {flex: 1},
   logoCard: {
-    borderRadius: 20,
-    backgroundColor: '#3B3C4E',
+    backgroundColor: 'transparent',
     width: 100,
     height: 100,
     alignSelf: 'flex-end',

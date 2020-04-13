@@ -5,7 +5,6 @@ import fontStyles from '_styles/font/fontStyle';
 import MainButton from '_molecules/buttons/mainButton';
 import AsyncStorage from '@react-native-community/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
-import Spinner from 'react-native-loading-spinner-overlay';
 
 interface Props {
   navigation: StackNavigationProp<any>;
@@ -42,7 +41,12 @@ const Intro = (props: Props) => {
           text={'Get Started'}
           onclick={() => {
             passedIntro()
-              .then(() => props.navigation.navigate('LogInScreen'))
+              .then(() =>
+                props.navigation.reset({
+                  index: 0,
+                  routes: [{name: 'LogInScreen'}],
+                }),
+              )
               .catch(console.error);
           }}
         />
